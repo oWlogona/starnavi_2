@@ -19,7 +19,7 @@ from django.urls import path
 
 from rest_framework import routers
 
-from wt.att_subscriptions.views import ATTSubscriptionViewSet
+from wt.att_subscriptions.views import ATTSubscriptionViewSet, ATTSubscriptionPriceLimit, ATTSubscriptionDetail
 from wt.plans.views import PlanViewSet
 from wt.purchases.views import PurchaseViewSet
 from wt.sprint_subscriptions.views import SprintSubscriptionViewSet
@@ -33,5 +33,7 @@ router.register(r'sprint_subscriptions', SprintSubscriptionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/att_subscriptions/price_limit/', ATTSubscriptionPriceLimit.as_view(), name='price_limit'),
+    path('api/att_subscriptions/<int:pk>/', ATTSubscriptionDetail.as_view(), name='att_sub_detail'),
     url(r'^api/', include((router.urls, 'api'), namespace='api')),
 ]

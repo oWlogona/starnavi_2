@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from wt.sprint_subscriptions.models import SprintSubscription
+
+
+class SprintSubscriptionAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in SprintSubscription._meta.fields]
+
+
+admin.site.register(SprintSubscription, SprintSubscriptionAdmin)

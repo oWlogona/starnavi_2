@@ -82,7 +82,7 @@ class ATTSubscriptionDetail(APIView):
                          sum_voice_usage.get('price__sum') if sum_voice_usage.get('price__sum') else 0)}
                  ]}]
         serializer_data = ATTSubscriptionDateSerializer(data, many=True)
-        return Response(serializer_data.data)
+        return Response(serializer_data.data, status=status.HTTP_200_OK)
 
 
 class ATTSubscriptionPriceLimit(APIView):

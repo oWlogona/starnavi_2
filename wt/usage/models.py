@@ -12,6 +12,11 @@ class DataUsageRecord(models.Model):
     usage_date = models.DateTimeField(null=True)
     kilobytes_used = models.IntegerField(null=False)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['att_subscription_id'])
+        ]
+
 
 class VoiceUsageRecord(models.Model):
     """Raw voice usage record for a subscription"""
@@ -20,3 +25,8 @@ class VoiceUsageRecord(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=5, default=0)
     usage_date = models.DateTimeField(null=True)
     seconds_used = models.IntegerField(null=False)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['att_subscription_id'])
+        ]
